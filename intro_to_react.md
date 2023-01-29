@@ -10,13 +10,15 @@ React allows for building UIs in a modular way, similar to how LEGOs can be used
 
 At this point I would like to deviate and ask the question:
 
-## What is a React Component?
+## What are React components?
 
-In React, a component is a piece of code that represents a part of a UI. It defines the structure, behavior, and presentation of a specific element on a web page, such as a button, a form, or a list. Components in React can be either functional or class-based, and they can be reused throughout the application. They accept inputs(props) and return a description of what should be rendered on the screen (JSX), React uses the virtual DOM to update the components and the actual DOM efficiently.
+In React, a component is an independent/ reausable piece of code that represents a part of a UI. It defines the structure, behavior, and presentation of a specific element on a web page, such as a button, a form, or a list. Components in React can be either functional or class-based, and they can be reused throughout the application. They accept inputs(props) and return a description of what should be rendered on the screen (JSX), React uses the virtual DOM to update the components and the actual DOM efficiently.
 
 Here is a small sample of a React component:
 
 ```js
+// components/MyButton.js
+
 import React from "react";
 
 const MyButton = (props) => {
@@ -33,6 +35,8 @@ The component returns a button element in JSX, which is a syntax extension for J
 It can be used in other component like this:
 
 ```js
+// src/App.js
+
 import MyButton from "./components/MyButton";
 
 const App = () => {
@@ -50,11 +54,89 @@ export default App;
 
 The code above display a very simple example, as we dive deeper into React components can be much more complex and include, logic, state, and lifecycle methods.
 
+## What are `props`?
+
+`Props` or `properties` in React refer to the data that is passed into a component by it's parent. Props are used to initialize the state of the component and can be passed as attributes in JSX. Inside the component props are received as arguments, similar to how parameters are passed to a function in Javascript. Utilizing props allows for dynamic data flow within the application, and it should be noted that props in React are read-only and cannot be modified.
+
+```js
+// components/NewComponent.js
+import React from "react";
+
+const NewComponent = (props) => {
+  return (
+    <div className="parent">
+      <h1>{props.title}</h1>
+      <p>{props.description}</p>
+    </div>
+  );
+};
+
+export default NewComponent;
+```
+
+This component takes in two properties or `props`, which are `title` and `description`, and renders them inside a `div` element.
+
+Therefore it can be used like this:
+
+```js
+// src/App.js
+import NewComponent from "./components/NewComponent";
+
+const App = () => {
+  return (
+    <div className="container">
+      <NewComponent title="Hello World!" description="Description of something will go here." />
+    </div>
+  );
+};
+
+export default App;
+```
+
+So in the example above we have the `NewComponent`
+
 ## ... What is React.js? (continued)
 
 React's component-based architecture is more than just a way to organize code, it's a game-changer. It makes it easier to update and add new features, it makes the code more reausable and it allows us to keep the codebase clean and maintainable. Imagine being able to use the same piece of code in different parts of the application, saving you time and making the development process more efficient.
 
-React's virtual DOM is a powerful performance optimization tool that allows for efficient
+React's virtual DOM is a powerful performance optimization tool that allows for efficient updates to the UI. It works by creating a light-weight representation of the actual DOM and only re-rendering the components that have been changed.
+
+This results in three things:
+
+- responsive UIs
+- improved performance
+- allows for scalability
+
+In simpler terms, when an update is made to a component, React compares the virtual DOM to the actual DOM, and only makes changes where necessary.
+
+## Why should we learn React.js?
+
+React is a popular and widely adopted library. It has a large and active community that contributes to its development and maintenance, and there are a lot of resources and tutorials available to help developers learn and use React effectively.
+
+## Library vs. Framework
+
+At this point I ask myself what is the difference between a Javascript Library and a Framework. We already established that a Javascript Library is a collection of pre-written code that developers can use to accomplish specific tasks. It allows developers to easily implement common functionality into their application without having to write the code themselves.
+
+A framework on the other hand, is a set of rules and guidelines for building and structuring an application. It provides a foundation on which developers can build their application, but it also imposes certain limitations on how the application should be structured and how the code should be written. It's like a sorta blueprint for building a house, it gives you the plans but also leaves room for customization.
+
+When I was researching how to make a presentation about React.js I came across keywords two of them being:
+
+- Reuseable
+- Dynamic
+
+So I Googled: `How is reusable and dynamic related to React`
+
+- [How to Create Dynamic Components in React](https://www.educative.io/answers/how-to-create-dynamic-components-in-react)
+
+p.s reading this article got me curious on even more questions which I will do some research on.....maybe.
+
+First let's connect the word reuseanble to React.js:
+
+React's component-based architecture allows for the creation of reausable components. This means that developers can create a component once and use it multiple times. This not only saves time but also makes the codebase more maintainable. Additionally, React's virtual DOM allows for efficient updates to the UI, which enables developers to create dynamic content that can change based on user interactions or other factors. This allows for creating an interactive and engaging user experience.
+
+## Functional Components vs Class Components
+
+## Stateless Components vs Stateful Components
 
 ## Vocabulary
 
