@@ -93,7 +93,7 @@ const App = () => {
 export default App;
 ```
 
-So in the example above we have the `NewComponent`
+So in the example above we have the `NewComponent` component is being passed two props, `title` and `description`, as attributes in JSX. Inside the component, these props are accessed as properties of the `props` object and are used to render dynamic content. It should be noticed that the component can't modify the props it recieves, because they are read-only.
 
 ## ... What is React.js? (continued)
 
