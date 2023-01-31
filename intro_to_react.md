@@ -144,12 +144,45 @@ Finally React.js is a third-party open-source library that is widely adopted by 
 
 ## Functional Components vs Class Components
 
+Functional components and Class components are two ways to define components in React. Functional components are simpler, more concise, and easier to understand and maintain compared to class components. They are declared as functions and receive props as an argument, and return a React element.
+
+```js
+import React from "react";
+
+const myComponent = (props) => {
+  return (
+    <div>
+      <h1>Hello, {props.name}!</h1>
+    </div>
+  );
+};
+
+export default myComponent;
+```
+
+Class components, on the other hand, are declared as classes and extend the React.Component base class. They have access to lifecycle methods and state, which can't be used in functional components.
+
+```js
+import React, { Component } from "react";
+
+class myComponent extends Component {
+  render() {
+    return (
+      <div>
+        <h1>Hello, {this.props.name}!</h1>
+      </div>
+    );
+  }
+}
+```
+
+In general, if your component just needs to render based on props, use a functional component. If you need to use state, lifecycle methods, or need performance optimization, use a class component.
+
 ## Stateless Components vs Stateful Components
 
 ## Vocabulary
 
-Monolithic
-: refers to a system or structure that is composed of a single large unit or component, rather than being divided into smaller, independent parts. In software development, a monolithic application is one in which all of the functions and features are built and run as a single, unified program. this is in contrast to a microservice architecture, where the application is broken down into smaller, independedt services that can be developed, deployed, and scale separately.
+Monolithic : refers to a system or structure that is composed of a single large unit or component, rather than being divided into smaller, independent parts. In software development, a monolithic application is one in which all of the functions and features are built and run as a single, unified program. this is in contrast to a microservice architecture, where the application is broken down into smaller, independent services that can be developed, deployed, and scale separately.
 
 Reuseable: capable of being used again or repeatedly
 
