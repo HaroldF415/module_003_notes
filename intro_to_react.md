@@ -119,7 +119,7 @@ At this point I ask myself what is the difference between a Javascript Library a
 
 A framework on the other hand, is a set of rules and guidelines for building and structuring an application. It provides a foundation on which developers can build their application, but it also imposes certain limitations on how the application should be structured and how the code should be written. It's like a sorta blueprint for building a house, it gives you the plans but also leaves room for customization.
 
-When I was researching how to make a presentation about React.js I came across keywords two of them being:
+When I was researching how to make a presentation about React.js I came across some keywords to describe it:
 
 - Reuseable
 - Dynamic
@@ -130,9 +130,17 @@ So I Googled: `How is reusable and dynamic related to React`
 
 p.s reading this article got me curious on even more questions which I will do some research on.....maybe.
 
-First let's connect the word reuseanble to React.js:
+First let's connect the word `reuseanble` to React.js:
 
-React's component-based architecture allows for the creation of reausable components. This means that developers can create a component once and use it multiple times. This not only saves time but also makes the codebase more maintainable. Additionally, React's virtual DOM allows for efficient updates to the UI, which enables developers to create dynamic content that can change based on user interactions or other factors. This allows for creating an interactive and engaging user experience.
+React's component-based architecture allows for the creation of `reausable` components. This means that developers can create a component once and use it multiple times. Additionally, React's virtual DOM allows for efficient updates to the UI, which enables developers to create dynamic content that can change based on user interactions or other factors. This allows for creating an interactive and engaging user experience.
+
+## ... Why should we learn React.js? (continued)
+
+Why are we learning it here in this bootcamp? right? there are other programming languages out there that we could be focusing on like Angular, Vue, or Svelte. Why is React.js so popular with Web developers. After googling I found this nifty Gist. [Frontend Frameworks Popularity](https://gist.github.com/tkrotoff/b1caa4c3a185629299ec234d2314e190) by [Tanguy Krotoff](https://gist.github.com/tkrotoff)
+
+It suggests that React.js still reigns champ among other Javascript Libraries and Frameworks. But let's go back to completing projects in Pursuit. So far we've completed many labs and slowly our codebase has grown. In one of our most recent projects we tackled accessing APIs. One of the main challenges in building these interactive web pages with vanilla Javascript is the difficulty in organizing and mainting the code. As the files grow larger and the lines of code become more lengthy, it can be hard to find the specific pieces that need to be updated, and it can be difficult to create reusable code. React addresses these issues by providing its component-based architecture. Once again this provides maintaiable, efficient, reausable code. It allows for creating an interactive and engaing UX, easy. It allows for updating new features a breeze while maintaing the codebase clean. I think that wev've all seen creating logic to update multiple components led to spaghetti code. It may not be apparent now, because of the scale of our projects but spaghetti code can lead to slow and inneficient DOM manipulation.
+
+Finally React.js is a third-party open-source library that is widely adopted by developers and companies. One of the key benefits of using an open-source library like React.js is the ability to take advantage of the contributions of a large community of developers. The community continually improves and maintains the library, adding new features and fixing bugs, making it a reliable choice for building web applications. Additionally, as an open-source project, React.js is free for anyone to use and contribute to, making it cost-effective option for development.
 
 ## Functional Components vs Class Components
 
@@ -142,3 +150,7 @@ React's component-based architecture allows for the creation of reausable compon
 
 Monolithic
 : refers to a system or structure that is composed of a single large unit or component, rather than being divided into smaller, independent parts. In software development, a monolithic application is one in which all of the functions and features are built and run as a single, unified program. this is in contrast to a microservice architecture, where the application is broken down into smaller, independedt services that can be developed, deployed, and scale separately.
+
+Reuseable: capable of being used again or repeatedly
+
+Dynamic: marked by usually continuous and productive activity or change.
