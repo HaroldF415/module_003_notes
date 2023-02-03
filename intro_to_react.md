@@ -178,7 +178,7 @@ class myComponent extends Component {
 
 In general, if your component just needs to render based on props, use a functional component. If you need to use state, lifecycle methods, or need performance optimization, use a class component.
 
-## Stateless Components vs Stateful Components
+Continued in react_state.md
 
 ## Vocabulary
 
