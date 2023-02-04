@@ -136,4 +136,67 @@ React components can be rendered in multiple places, either on the `server-side`
 
 When a component is rendered, it is transformed into actual HTML elements, which can be seen and interacted with by the user. The process of rendering in React is performed automatically whenever there are changes to the state or properties of a component, ensuring that the UI is always up-to-date and responsive to user interactions.
 
-## Stateless Components vs Stateful Components
+---
+
+## `display: none` \_\_\_\_ on React components
+
+In one of our labs we were given a task to: (line 51 - 59 on `game-play.test.js` inside `cypress/integration`)
+
+```js
+it("should hide the 'Current Score' text and incrementor buttons", () => {
+  Cypress._.times(25, () => {
+    cy.get("button").contains("+4").click();
+  });
+
+  cy.react("App").should("not.contain.text", "Current Score");
+  cy.get("button").contains("+4").should("not.exist");
+  cy.get("button").contains("Pay 10 points").should("not.exist");
+});
+```
+
+The code provided above we know to be from the Cypress framework. The test checks the behavior of a React application by simulating user interactions and asserting expectations on the UI.
+
+This particular test starts by clicking the `+4` button 25 times. This will cause the state of the React application to change, potentially hiding certain elements from the UI.
+
+This means that the `Current Score` heading, the `+4` button, and the `Pay 10 points` button should not exist once the score reaches 100.
+
+We've learned that by using CSS we can easily achieve this by assigning a class to the React component and setting up CSS rules for that class.
+
+```js
+<div className="game-container">
+  <h1>Current Score: {score}</h1>
+  <button>+{point}</button>
+  <button>
+    Pay 10 points to turn +{point} to +{point + 1}
+  </button>
+</div>
+```
+
+```css
+.game-container {
+  display: none;
+}
+```
+
+But in React we have to do things differently:
+
+```js
+const [display, setDisplay] = useState(false);
+
+// write this logic somewhere
+if (score >= 100) {
+  setDisplay(true);
+}
+
+<div className={display ? "game-container" : null}></div>;
+```
+
+While this code does work and run. It throws errors on cypress. For now I think I've spent to much time on this problem trying to figure out why it does not work with Cypress. But I will assign it as one of my tasks to complete once I do have time.
+
+The code I used instead was:
+
+```js
+{
+  score >= 100 ? <div className="game-container"></div> : null;
+}
+```
