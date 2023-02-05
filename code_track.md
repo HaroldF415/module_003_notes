@@ -2,7 +2,7 @@
 
 There is a class held every Saturday by Jordan Manley an Instructor at Pursuit. His knowledge in this industry just leaves me with my mouth open every time I'm allowed to be near his orbit. On 02/04/2023 we went over some HTML/CSS then hoped over to React. Before the study session was complete we had some time and he opened the floor to questions. A particular individual brought up that they were asked about `Generator Functions` at a Front-End Dev interview. This topic puzzled me so much that I thought for a moment I was Joe Pesci in the set of Home Alone 2 with his head burning.
 
-<div style="width: 300px; margin-left: 400px;">
+<div style="width: 300px;">
 <img src="https://media.giphy.com/media/xUySTzIkXBalTgDBKw/giphy.gif"  alt="home-alone-2">
 </div>
 
@@ -32,7 +32,164 @@ console.log(generatorObject);
 // Output: Object [Generator] {}
 ```
 
-In the code provided above we created a `Generator Function` and we can see that MDN WebDocs is right. I mean when is it not right. ^\_^. I then proceeded to call the function and store it in variable then `console.log()` that variable to see what was inside. Let's now make use of the `yield` expression
+In the code provided above we created a `Generator Function` and we can see that MDN WebDocs is right. I mean when is it not right. right?. I then proceeded to call the function and store it in variable, then `console.log()` that variable to see what was inside. Now that we have accomplished to find out what was inside that variable. Let's now make use of the `yield` expression/operator
+
+<br>
+
+---
+
+## What is `yield`?
+
+<br/>
+
+The `yield` operator is utilized to temporarily halt and restart a `generator function`. The result of the expression after the `yield` keyword is passed back to the caller of the `generator`. It can be considered as a generator-based equivalent of the `return` keyword.
+
+```js
+function* generatorFunction() {
+  yield 1;
+}
+
+const generatorObject = generatorFunction();
+
+console.log(generatorObject.next());
+// Output: { value: 1, done: false }
+```
+
+<br>
+
+At this point I'm asking myself...
+
+---
+
+## What is `.next()`?
+
+<br/>
+
+The `.next()` method returns an object with two properties `done` and `value`. We can also provide a value to the `.next()` method to send a value to the `generator`. So something like this:
+
+```js
+generatorObject.next(2);
+```
+
+The code above is calling the `.next()` method on a `generator` object, and passing and argument `2`. This argument is used to provide a `value` to the `generator` function, which can be accessed using the `yield` operator. For example in the `generator` function we could write it like this:
+
+```js
+function* generatorFunction() {
+  const num = yield;
+
+  console.log(num);
+}
+
+const generatorObject = generatorFunction();
+
+generatorObject.next(2);
+
+// Output: ?
+```
+
+This is where it starts to get <strong style="font-size: 20px;">weird</strong>.
+
+MDN indicates that this line `generatorObject.next(2)` will not log anything out. Because the generator was not yielding anything initially.
+
+In the code further up I had something like this:
+
+```js
+function* generatorFunction() {
+  yield 1;
+}
+
+const generatorObject = generatorFunction();
+
+console.log(generatorObject.next());
+// Output: { value: 1, done: false }
+```
+
+But when I added a value to the `.next()` like this:
+
+```js
+function* generatorFunction() {
+  yield 1;
+  const num = yield;
+  console.log(num);
+}
+
+const generatorObject = generatorFunction();
+
+generatorObject.next(2);
+// Output: ?
+```
+
+Nothing printed out. Will go back to this later. But let's move forward with the example in MDN docs:
+
+```js
+function* generatorFunction() {
+  const num = yield;
+  console.log(num);
+}
+
+const generatorObject = generatorFunction();
+
+// The first value in `.next()` will be lost and nothing will be printed out
+generatorObject.next(1);
+
+// Output: none
+
+// The second value in the `.next()` will print out
+generatorObject.next(2);
+
+// Output: 2
+```
+
+The first value passed into the `.next()` method of a `generator` function is lost because the `generator` function has not yet executed any code. When we call `.next()` on a `generator` function, it runs the `generator's` code until it reaches a `yield` expression, at which point it pauses execution and returns a value. If you pass a value into the `.next()` method a second time, it will be available as the result of the current `yield` expression when the `generator` function is resumed. This is a convenient way to provide information to the `generator` function from outside its scope, allowing for its control flow and behavior.
+
+<br>
+
+But as it stands the first time we make a call to the `generator` function with this line of code:
+
+```js
+generatorObject.next(1);
+```
+
+It will not pass in a value, so the `generator` function will pause execution at the `yield` expression and wait for a value to be passed in.
+
+<br>
+
+> What I believe is happening here in my own words is that since the first time we call on the `.next()` method with a value. Since the `generator` function doesn't have anything in yield. Then the first value passed on the first try with `.next()` that value will be lost. I sort of get it. But then I don't. - <i>Harold F.</i>
+
+The second call to the `generator` object passes in the value of `2`, which is then assigned to the `number` variable. The `generator` function resumes execution and logs the value of `number`, which is `2`.
+
+In general, values passed into the `.next()` method of a `generator` function are used to provide a value to a `yield` expression. The `yield` expression acts as a pause point in the `generator` functions, allowing you to return a value an control the flow of execution.
+
+<br>
+____
+
+Now that we've found out what `yield` and `.next()` do let's move forward with the original code at the top of the `code_track.md`.
+
+```js
+function* generatorFunction() {
+  console.log("Generator Function has been called.");
+}
+
+const generatorObject = generatorFunction();
+
+generatorObject.next();
+// Output: "Generator Function has been called."
+```
+
+So let's implement what we've just read. It's easy to understand that just calling the `generator` function like this will allow the console.log() to log. But let's add the `yield` expression with a value. Then console.log() that value.
+
+```js
+function* generatorFunction() {
+  console.log("Generator Function has been called.");
+  yield 1;
+}
+
+const generatorObject = generatorFunction();
+
+console.log(generatorObject.next());
+// Output: "Generator Function has been called."
+// Output: {value: 1, done: false}
+```
 
 ## Vocabulary
 
@@ -44,7 +201,11 @@ Asynchronous -
 
 ---
 
-[MDN - function\*](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*)
+[MDN - Function\*](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*)
+
+[MDN - Yield](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/yield)
+
+[MDN - .next()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator/next)
 
 [Code Wars - Generator Functions - Problem](https://www.codewars.com/kata/5636840bd87777688b00006c/train/javascript)
 
