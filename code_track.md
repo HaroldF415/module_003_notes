@@ -1,5 +1,13 @@
 # Generator Functions
 
+There is a class held every Saturday by Jordan Manley an Instructor at Pursuit. His knowledge in this industry just leaves me with my mouth open every time I'm allowed to be near his orbit. On 02/04/2023 we went over some HTML/CSS then hoped over to React. Before the study session was complete we had some time and he opened the floor to questions. A particular individual brought up that they were asked about `Generator Functions` at a Front-End Dev interview. This topic puzzled me so much that I thought for a moment I was Joe Pesci in the set of Home Alone 2 with his head burning.
+
+<div style="width: 300px; margin-left: 400px;">
+<img src="https://media.giphy.com/media/xUySTzIkXBalTgDBKw/giphy.gif"  alt="home-alone-2">
+</div>
+
+---
+
 ## What are `Generator Functions`?
 
 <br />
