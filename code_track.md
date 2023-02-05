@@ -161,7 +161,8 @@ The second call to the `generator` object passes in the value of `2`, which is t
 In general, values passed into the `.next()` method of a `generator` function are used to provide a value to a `yield` expression. The `yield` expression acts as a pause point in the `generator` functions, allowing you to return a value an control the flow of execution.
 
 <br>
-____
+
+---
 
 Now that we've found out what `yield` and `.next()` do let's move forward with the original code at the top of the `code_track.md`.
 
@@ -190,6 +191,26 @@ console.log(generatorObject.next());
 // Output: "Generator Function has been called."
 // Output: {value: 1, done: false}
 ```
+
+Let's call `.next()` one more time:
+
+```js
+function* generatorFunction() {
+  console.log("The generator function has been called.");
+  yield 1;
+}
+
+const generatorObject = generatorFunction();
+
+console.log(generatorObject.next());
+// Output: "Generator Function has been called."
+// Output: { value: 1, done: false }
+
+console.log(generatorObject.next());
+// Output: { value: undefined, done: true }
+```
+
+Each time we call the `.next()` method, it runs the `generator` function's code until it reaches a `yield` expression, at which point it returns an object with the `value` property set to the value specified by the `yield` expression and the `done` property set to `false`. Once the `generator` function has finished executing, subsequent calls to the `.next()` will return an object with `value` set to `undefined` and `done` set to `true`.
 
 ## Vocabulary
 
