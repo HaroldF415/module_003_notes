@@ -154,7 +154,7 @@ It will not pass in a value, so the `generator` function will pause execution at
 
 <br>
 
-> What I believe is happening here in my own words is that since the first time we call on the `.next()` method with a value. Since the `generator` function doesn't have anything in yield. Then the first value passed on the first try with `.next()` that value will be lost. I sort of get it. But then I don't. - <i>Harold F.</i>
+> <span style="font-size: 19px">What I believe is happening here in my own words is that since the first time we call on the `.next()` method with a value. Since the `generator` function doesn't have anything in yield. Then the first value passed on the first try with `.next()` that value will be lost. I sort of get it. But then I don't. - <i>Harold F.</i></span>
 
 <br>
 
@@ -166,7 +166,9 @@ In general, values passed into the `.next()` method of a `generator` function ar
 
 ---
 
-Now that we've found out what `yield` and `.next()` do let's move forward with the original code at the top of the `code_track.md`.
+<br>
+
+<span style="font-size: 15px;">Now that we've found out what `yield` and `.next()` do let's move forward with the original code at the top of the `code_track.md`.</span>
 
 ```js
 function* generatorFunction() {
@@ -212,9 +214,15 @@ console.log(generatorObject.next());
 // Output: { value: undefined, done: true }
 ```
 
+<br>
+
 The `.next()` method of a `generator` function allows you to run the function's code incrementally, one `yield` expression at a time. As explained above when you call the `.next()` method, the `generator` function runs its code until it reaches a `yield` expression. At that point, it returns an object with two properties: `value` and `done`. The `value` property is set to the value specified by the `yield` expression and the `done` property is set to `false`.
 
 The `done` property is set to `false` because when the `generator` function is first called we can assume that the function has not yet completed its execution and has not reached the end of its code. The `generator` function can be resumed multiple times by calling the `.next()` method and it only terminates when it encounters a `return` statement or when it has executed all of its code and has reached the end of its function block. Most likely the `done` property is set to `false` to indicate that the `generator` function is still in progress and can be resumed by subsequent calls to the `.next()` (meaning we can call `.next()` again). Once the `generator` function has completed its execution and the end is reached, the `done` property will be set to `true`.
+
+<br>
+
+---
 
 ## Vocabulary
 
