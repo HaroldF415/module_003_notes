@@ -140,7 +140,7 @@ generatorObject.next(2);
 // Output: 2
 ```
 
-The first value passed into the `.next()` method of a `generator` function is lost because the `generator` function has not yet executed any code. When we call `.next()` on a `generator` function, it runs the `generator's` code until it reaches a `yield` expression, at which point it pauses execution and returns a value. If you pass a value into the `.next()` method a second time, it will be available as the result of the current `yield` expression when the `generator` function is resumed. This is a convenient way to provide information to the `generator` function from outside its scope, allowing for its control flow and behavior.
+The first line that we write after creating the `generatorObject` is the `.next()` method. The value that we insert there is lost during the first pass because the `generator` function has not yet executed any code. The second call to the `.next()` method on a `generator` object, will run the `generator`'s code until it reaches a `yield` keyword, at which point it pauses execution and returns a value. If you pass a value into the `.next()` method a second time, it will be available as the result of the current `yield` expression when the `generator` function is resumed. This is one way we can provide information to the `generator` function from outside its own scope, this will allow us to control its flow and behavior.
 
 <br>
 
@@ -158,7 +158,7 @@ It will not pass in a value, so the `generator` function will pause execution at
 
 <br>
 
-The second call to the `generator` object passes in the value of `2`, which is then assigned to the `number` variable. The `generator` function resumes execution and logs the value of `number`, which is `2`.
+The second call to the `generator` object in this example passes in the value of `2`, which is then assigned to the `number` variable. The `generator` function will then resume its execution and log out the value of `number`, which is `2`.
 
 In general, values passed into the `.next()` method of a `generator` function are used to provide a value to a `yield` expression. The `yield` expression acts as a pause point in the `generator` functions, allowing you to return a value an control the flow of execution.
 
